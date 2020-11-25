@@ -5,14 +5,20 @@ const router = express();
 router.get("/", (req, res, next) => {
   res.status(200).json({
     success: true,
-    message: "Handling GET request to /orders"
+    message: "Order retrived successfully"
   });
 });
 
 router.post("/", (req, res, next) => {
+  const order = {
+    productId: req.body.productId,
+    quantity: req.body.quantity
+  };
+
   res.status(200).json({
     success: true,
-    message: "Handling POST request to /orders"
+    message: "Order created successfully",
+    order: order
   });
 });
 
@@ -21,7 +27,7 @@ router.get("/:orderId", (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    message: "Passed an ID",
+    message: "Order retrived successfully",
     orderId: orderId
   });
 });
