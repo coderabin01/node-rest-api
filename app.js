@@ -6,9 +6,11 @@ const mongoose = require("mongoose");
 // Controller Routes
 const productRoutes = require("./api/routes/products");
 const orderRoutes = require("./api/routes/orders");
+const userRoutes = require("./api/routes/user");
 
 // DB Connection
 mongoose.set("useUnifiedTopology", true);
+mongoose.set('useCreateIndex', true);
 mongoose.connect(
   "mongodb+srv://dbUser:dbUser@cluster0.bxwjx.mongodb.net/test?retryWrites=true&w=majority",
   { useNewUrlParser: true }
@@ -55,10 +57,11 @@ app.use((req, res, next) => {
 // Routes which should handle requests
 app.use("/products", productRoutes);
 app.use("/orders", orderRoutes);
+app.use("/user", userRoutes);
 
 // Handling Errors
 app.use((req, res, next) => {
-  const error = new Error("Not found");
+  const error = new Error("API doesnot exist");
   error.status = 404;
   next(error);
 });

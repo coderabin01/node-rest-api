@@ -104,10 +104,6 @@ router.delete("/:productId", (req, res, next) => {
         error: error
       });
     });
-  // res.status(200).json({
-  //   success: true,
-  //   message: "Delete product"
-  // });
 });
 
 module.exports = router;
